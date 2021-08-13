@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans>
+    <bean id="transferService"
+          class="com.wills.spring.example.service.impl.TransferServiceImpl">
+        <property name="transferDao" ref="transferDao"></property>
+    </bean>
+    <bean id="transferDao"
+          class="com.wills.spring.example.dao.impl.TransferDaoImpl">
+    </bean>
+</beans>
