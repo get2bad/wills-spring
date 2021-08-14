@@ -1,15 +1,15 @@
 package com.wills.spring.example;
 
+import com.wills.spring.example.entity.HttpCode;
 import com.wills.spring.example.entity.User;
 import com.wills.spring.example.service.TransferService;
 import com.wills.spring.example.service.impl.TransferServiceImpl;
-import com.wills.spring.example.singleton.Singleton;
 import com.wills.spring.factory.BeanFactory;
+import com.wills.spring.proxy.ProxyFactory;
 import com.wills.spring.resource.Resources;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.Date;
 
 /**
  * @ClassName Example
@@ -20,11 +20,6 @@ import java.util.Date;
  * 测试类
  */
 public class Example {
-
-    @Test
-    public void test() throws Exception{
-
-    }
 
     @Test
     public void test1() throws Exception{
@@ -38,9 +33,26 @@ public class Example {
     public void test2() throws Exception{
 //        BeanFactory factory = new BeanFactory();
         TransferService service = (TransferService)BeanFactory.getBean("transferService");
-        User from = Singleton.getUserById(1);
-        from.setTansfer(20d);
-        User to = Singleton.getUserById(2);
-        service.transfer(from, to);
+        User from = service.getUserById(1);
+        User to = service.getUserById(2);
+        from.setTotal(from.getTotal() - 20);
+        to.setTotal(to.getTotal() + 20);
+        service.transfer(from,to);
+    }
+
+    /**
+     * 测试 事务注解 以及 代理工厂
+     * @throws Exception
+     */
+    @Test
+    public void test3() throws Exception{
+        ProxyFactory factory = (ProxyFactory) BeanFactory.getBean("proxyFactory");
+        TransferService service = (TransferService) factory.transactionManager(BeanFactory.getBean("transferService"));
+        User from = service.getUserById(1);
+        User to = service.getUserById(2);
+        from.setTotal(from.getTotal() - 20);
+        to.setTotal(to.getTotal() + 20);
+        HttpCode response = service.transfer(from, to);
+        System.out.println(response);
     }
 }

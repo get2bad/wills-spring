@@ -15,26 +15,18 @@ public class User {
 
     private String name;
 
-    private Double total;
+    private Integer total;
 
-    private Double tansfer;
+    private Date date;
 
-    private Date transferDate;
+    public User() {
+    }
 
-    public User(Integer id, String name, Double total, Double tansfer, Date transferDate) {
+    public User(Integer id, String name, Integer total, Date date) {
         this.id = id;
         this.name = name;
         this.total = total;
-        this.tansfer = tansfer;
-        this.transferDate = transferDate;
-    }
-
-    public Date getTransferDate() {
-        return transferDate;
-    }
-
-    public void setTransferDate(Date transferDate) {
-        this.transferDate = transferDate;
+        this.date = date;
     }
 
     public Integer getId() {
@@ -53,20 +45,20 @@ public class User {
         this.name = name;
     }
 
-    public Double getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 
-    public Double getTansfer() {
-        return tansfer;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTansfer(Double tansfer) {
-        this.tansfer = tansfer;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
@@ -75,8 +67,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", total=" + total +
-                ", tansfer=" + tansfer +
-                ", transferDate=" + transferDate +
+                ", date=" + date +
                 '}';
     }
 }

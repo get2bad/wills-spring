@@ -1,6 +1,7 @@
 package com.wills.spring.example.service.impl;
 
 import com.wills.spring.annotation.AutoWired;
+import com.wills.spring.annotation.Transaction;
 import com.wills.spring.example.dao.TransferDao;
 import com.wills.spring.example.entity.HttpCode;
 import com.wills.spring.example.entity.User;
@@ -19,7 +20,7 @@ public class TransferServiceImpl implements TransferService {
     private TransferDao transferDao;
 
     @Override
-    public HttpCode transfer(User from, User to) throws Exception {
+    public HttpCode transfer(User from,User to) throws Exception {
         try {
             transferDao.transfer(from, to);
             return HttpCode.ok();
@@ -28,6 +29,12 @@ public class TransferServiceImpl implements TransferService {
         }
         return HttpCode.faild("未知错误,转账失败！");
     }
+
+    @Override
+    public User getUserById(Integer id) throws Exception {
+        return transferDao.getUserById(id);
+    }
+
 
     public void setTransferDao(TransferDao transferDao) {
         this.transferDao = transferDao;

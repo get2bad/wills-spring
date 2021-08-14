@@ -1,5 +1,6 @@
 package com.wills.spring.example.dao;
 
+import com.wills.spring.example.entity.HttpCode;
 import com.wills.spring.example.entity.User;
 
 /**
@@ -10,6 +11,8 @@ import com.wills.spring.example.entity.User;
  * @Description
  */
 public interface TransferDao {
+
+    public User getUserById(Integer id);
 
     public void transfer(User from,User to) throws Exception;
 }

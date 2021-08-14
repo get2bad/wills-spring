@@ -38,4 +38,13 @@ public class HttpCode {
     public static <T> HttpCode faild(Integer code,T data,String msg){
         return new HttpCode(code, data, msg);
     }
+
+    @Override
+    public String toString() {
+        return "HttpCode{" +
+                "code=" + code +
+                ", data=" + data +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.wills.spring.example.service;
 
+import com.wills.spring.annotation.Transaction;
 import com.wills.spring.example.entity.HttpCode;
 import com.wills.spring.example.entity.User;
 
@@ -12,5 +13,9 @@ import com.wills.spring.example.entity.User;
  */
 public interface TransferService {
 
-    public HttpCode transfer(User from, User to) throws Exception;
+    // 开启事务注解
+    @Transaction(startTransaction = true)
+    public HttpCode transfer(User from,User to) throws Exception;
+
+    public User getUserById(Integer id) throws Exception;
 }

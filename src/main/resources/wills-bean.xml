@@ -7,4 +7,16 @@
     <bean id="transferDao"
           class="com.wills.spring.example.dao.impl.TransferDaoImpl">
     </bean>
+
+    <bean id="druidUtils"
+          class="com.wills.spring.util.DruidUtils">
+    </bean>
+
+    <bean id="transactionManager"
+          class="com.wills.spring.transaction.TransactionManager">
+    </bean>
+
+    <bean id="proxyFactory"
+          class="com.wills.spring.proxy.ProxyFactory">
+    </bean>
 </beans>
