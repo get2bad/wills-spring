@@ -43,6 +43,8 @@ public class ProxyFactory {
 
                 if(aop != null){
                     res = aop(aop,transaction,method,clazz,args);
+                } else if(transaction != null) {
+                    res = startTransaction(transaction, method, clazz, args);
                 } else {
                     res = method.invoke(clazz, args);
                 }
