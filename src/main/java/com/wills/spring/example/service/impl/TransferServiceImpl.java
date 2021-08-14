@@ -22,6 +22,7 @@ public class TransferServiceImpl implements TransferService {
     @Override
     public HttpCode transfer(User from,User to) throws Exception {
         try {
+            System.out.println("正在执行转账");
             transferDao.transfer(from, to);
             return HttpCode.ok();
         } catch (Exception e) {

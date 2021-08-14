@@ -3,7 +3,6 @@ package com.wills.spring.example;
 import com.wills.spring.example.entity.HttpCode;
 import com.wills.spring.example.entity.User;
 import com.wills.spring.example.service.TransferService;
-import com.wills.spring.example.service.impl.TransferServiceImpl;
 import com.wills.spring.factory.BeanFactory;
 import com.wills.spring.proxy.ProxyFactory;
 import com.wills.spring.resource.Resources;
@@ -41,13 +40,13 @@ public class Example {
     }
 
     /**
-     * 测试 事务注解 以及 代理工厂
+     * 测试 事务注解 以及 代理工厂 还有 @AOP 切面测试
      * @throws Exception
      */
     @Test
     public void test3() throws Exception{
         ProxyFactory factory = (ProxyFactory) BeanFactory.getBean("proxyFactory");
-        TransferService service = (TransferService) factory.transactionManager(BeanFactory.getBean("transferService"));
+        TransferService service = (TransferService) factory.getProxy(BeanFactory.getBean("transferService"));
         User from = service.getUserById(1);
         User to = service.getUserById(2);
         from.setTotal(from.getTotal() - 20);
