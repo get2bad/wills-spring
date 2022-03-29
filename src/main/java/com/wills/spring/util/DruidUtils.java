@@ -21,7 +21,7 @@ public class DruidUtils {
             // 配置 c3p0 连接池
             // TODO 后期会读取配置文件
             ComboPooledDataSource dataSource = new ComboPooledDataSource();
-            dataSource.setDriverClass("com.mysql.jdbc.Driver");
+            dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
             dataSource.setUser("root");
             dataSource.setPassword("123456");
             dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8");

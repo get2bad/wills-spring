@@ -1,5 +1,6 @@
 package com.wills.spring.example.dao;
 
+import com.wills.spring.annotation.Mapper;
 import com.wills.spring.example.entity.HttpCode;
 import com.wills.spring.example.entity.User;
 
@@ -10,6 +11,7 @@ import com.wills.spring.example.entity.User;
  * @Version 1.0
  * @Description
  */
+@Mapper
 public interface TransferDao {
 
     public User getUserById(Integer id);

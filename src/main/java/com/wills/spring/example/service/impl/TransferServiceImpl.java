@@ -1,11 +1,16 @@
 package com.wills.spring.example.service.impl;
 
 import com.wills.spring.annotation.AutoWired;
+import com.wills.spring.annotation.Component;
+import com.wills.spring.annotation.Scope;
 import com.wills.spring.annotation.Transaction;
 import com.wills.spring.example.dao.TransferDao;
 import com.wills.spring.example.entity.HttpCode;
 import com.wills.spring.example.entity.User;
 import com.wills.spring.example.service.TransferService;
+import com.wills.spring.util.DruidUtils;
+
+import java.sql.Connection;
 
 /**
  * @ClassName TransferServiceImpl
@@ -14,6 +19,8 @@ import com.wills.spring.example.service.TransferService;
  * @Version 1.0
  * @Description
  */
+@Component
+@Scope
 public class TransferServiceImpl implements TransferService {
 
     @AutoWired
@@ -24,6 +31,7 @@ public class TransferServiceImpl implements TransferService {
         try {
             System.out.println("正在执行转账");
             transferDao.transfer(from, to);
+            System.out.println("转账成功！");
             return HttpCode.ok();
         } catch (Exception e) {
             e.printStackTrace();
